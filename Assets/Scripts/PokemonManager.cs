@@ -1,44 +1,52 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PokemonManager : MonoBehaviour
 {
     [Header("Sasha")]
-    [SerializeField] GameObject _sashaPokemon1;
-    [SerializeField] GameObject _sashaPokemon2;
+    [SerializeField] GameObject _sashaActivePokemon;
+    [SerializeField] GameObject _sashaReservePokemon;
 
     [Header("Ondine")]
-    [SerializeField] GameObject _ondinePokemon1;
-    [SerializeField] GameObject _ondinePokemon2;
+    [SerializeField] GameObject _ondineActivePokemon;
+    [SerializeField] GameObject _ondineReservePokemon;
 
     [Header("Pokemons")]
     [SerializeField] Sprite _salameche;
     [SerializeField] Sprite _bulbizarre;
     [SerializeField] Sprite _carapuce;
 
-    public void GetActivePokemons(List<int> sashaPokemons, List<int> ondinePokemons)
+    [Header("Attack")]
+    [SerializeField]
+    TMP_Text _attackName;
+
+    public void GetSelectedPokemons(List<int> _sashaPokemons, List<int> _ondinePokemons)
     {
-        SetPokemon(_sashaPokemon1, sashaPokemons[0]);
-        SetPokemon(_sashaPokemon2, sashaPokemons[1]);
-        SetPokemon(_ondinePokemon1, ondinePokemons[0]);
-        SetPokemon(_ondinePokemon2, ondinePokemons[1]);
+        SetPokemon(_sashaActivePokemon, _sashaPokemons[0]);
+        SetPokemon(_sashaReservePokemon, _sashaPokemons[1]);
+        SetPokemon(_ondineActivePokemon, _ondinePokemons[0]);
+        SetPokemon(_ondineReservePokemon, _ondinePokemons[1]);
     }
 
-    private void SetPokemon(GameObject pokemonGameObject, int pokemonIndex)
+    private void SetPokemon(GameObject _pokemonGameObject, int _pokemonIndex)
     {
-        Image pokemonImage = pokemonGameObject.GetComponent<Image>();
+        Image _pokemonImage = _pokemonGameObject.GetComponent<Image>();
 
-        switch (pokemonIndex)
+        switch (_pokemonIndex)
         {
             case 1:
-                pokemonImage.sprite = _salameche;
+                _pokemonImage.sprite = _salameche;
+                _attackName.text = "Flammèche";
                 break;
             case 2:
-                pokemonImage.sprite = _bulbizarre;
+                _pokemonImage.sprite = _bulbizarre;
+                _attackName.text = "Soin";
                 break;
             case 3:
-                pokemonImage.sprite = _carapuce;
+                _pokemonImage.sprite = _carapuce;
+                _attackName.text = "Pistolet à O";
                 break;
         }
     }

@@ -57,7 +57,7 @@ public class TerrainGenerator : MonoBehaviour
         Debug.Log(_ondinePokemons[0]);
         Debug.Log(_ondinePokemons[1]);
 
-        _pokemonManager.GetActivePokemons(_sashaPokemons, _ondinePokemons);
+        _pokemonManager.GetSelectedPokemons(_sashaPokemons, _ondinePokemons);
 
         _terrainPage.SetActive(false);
         _battlePage.SetActive(true);
