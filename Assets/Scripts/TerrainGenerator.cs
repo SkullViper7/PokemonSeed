@@ -14,8 +14,8 @@ public class TerrainGenerator : MonoBehaviour
     int _sashaSeed;
     int _ondineSeed;
 
-    List<int> sashaPokemons = new List<int> { 1, 2, 3 };
-    List<int> ondinePokemons = new List<int> { 1, 2, 3 };
+    List<int> _sashaPokemons = new List<int> { 1, 2, 3 };
+    List<int> _ondinePokemons = new List<int> { 1, 2, 3 };
 
     [SerializeField]
     GameObject _terrainPage;
@@ -47,17 +47,17 @@ public class TerrainGenerator : MonoBehaviour
         }
 
         Random.InitState(_sashaSeed);
-        sashaPokemons.RemoveAt(Random.Range(0, sashaPokemons.Count));
+        _sashaPokemons.RemoveAt(Random.Range(0, _sashaPokemons.Count));
 
         Random.InitState(_ondineSeed);
-        ondinePokemons.RemoveAt(Random.Range(0, ondinePokemons.Count));
+        _ondinePokemons.RemoveAt(Random.Range(0, _ondinePokemons.Count));
 
-        Debug.Log(sashaPokemons[0]);
-        Debug.Log(sashaPokemons[1]);
-        Debug.Log(ondinePokemons[0]);
-        Debug.Log(ondinePokemons[1]);
+        Debug.Log(_sashaPokemons[0]);
+        Debug.Log(_sashaPokemons[1]);
+        Debug.Log(_ondinePokemons[0]);
+        Debug.Log(_ondinePokemons[1]);
 
-        _pokemonManager.GetActivePokemons(sashaPokemons, ondinePokemons);
+        _pokemonManager.GetActivePokemons(_sashaPokemons, _ondinePokemons);
 
         _terrainPage.SetActive(false);
         _battlePage.SetActive(true);
