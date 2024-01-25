@@ -14,6 +14,9 @@ public class TerrainGenerator : MonoBehaviour
     int _sashaSeed;
     int _ondineSeed;
 
+    int _sashaRandomActivePokemon;
+    int _ondineRandomActivePokemon;
+
     List<int> _sashaPokemons = new List<int> { 1, 2, 3 };
     List<int> _ondinePokemons = new List<int> { 1, 2, 3 };
 
@@ -34,13 +37,13 @@ public class TerrainGenerator : MonoBehaviour
                 break;
             case 1:
                 {
-                    _sashaSeed = 10;
+                    _sashaSeed = 69;
                     _ondineSeed = 694;
                 }
                 break;
             case 2:
                 {
-                    _sashaSeed = 20;
+                    _sashaSeed = 218;
                     _ondineSeed = 7954;
                 }
                 break;
@@ -57,7 +60,11 @@ public class TerrainGenerator : MonoBehaviour
         Debug.Log(_ondinePokemons[0]);
         Debug.Log(_ondinePokemons[1]);
 
+        _sashaRandomActivePokemon = Random.Range(0, 2);
+        _ondineRandomActivePokemon = Random.Range(0, 2);
+
         _pokemonManager.GetSelectedPokemons(_sashaPokemons, _ondinePokemons);
+        _pokemonManager.SetActivePokemon(_sashaRandomActivePokemon, _ondineRandomActivePokemon);
 
         _terrainPage.SetActive(false);
         _battlePage.SetActive(true);
